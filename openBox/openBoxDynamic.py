@@ -1,11 +1,9 @@
 import json
-
 import requests
 import jsonpath
+from flask import Flask
 
-
-def WhosFriend(tag, dynamic):
-    return tag in dynamic
+server = Flask(__name__)
 
 
 def checkAllResult(tagNeed, dynamic):
@@ -18,6 +16,7 @@ def checkAllResult(tagNeed, dynamic):
     return dictTag
 
 
+@server.route('/sendRequest')
 def sendRequest(uid):
     url = "https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?offset=&host_mid={0}&timezone_offset=-480&features=itemOpusStyle".format(
         uid)
@@ -30,6 +29,7 @@ def sendRequest(uid):
 
 
 if __name__ == '__main__':
-    tagNeed1 = ["明日方舟", "原神", "星穹铁道", "虚拟主播", "抽奖"]
-    print(checkAllResult(tagNeed1, sendRequest("208259")))
-    print(sendRequest("208259"))
+    server.run(host='127.0.0.1', port=5000, debug=True)
+    # tagNeed1 = ["明日方舟", "原神", "星穹铁道", "虚拟主播", "抽奖"]
+    # print(checkAllResult(tagNeed1, sendRequest("208259")))
+    # print(sendRequest("208259"))
