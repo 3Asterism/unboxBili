@@ -1,0 +1,7 @@
+openBoxDynamic.py:
+    @server.route('/sendRequest', methods=['POST'])
+    def sendRequest():
+        {
+            "uid" : 1899520,
+            "tag" : ["原神", "明日方舟"]
+        }
