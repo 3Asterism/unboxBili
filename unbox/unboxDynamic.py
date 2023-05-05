@@ -24,8 +24,18 @@ def sendRequest():
         uid)
     response = requests.get(url=url)
     page = json.loads(response.text)
+    pageForOffset = page["data"]
+    # 拿到offset字段 以获得全部动态 不然动态不全
+    offsetList = jsonpath.jsonpath(pageForOffset, '$..offset')
+    fullDynamicURL = "https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?offset={0}&host_mid={1}&timezone_offset=-480&features=itemOpusStyle".format(
+        offsetList[0], uid)
+    # 重新拉取动态
+    response = requests.get(url=fullDynamicURL)
+    page = json.loads(response.text)
     resultData = page["data"]["items"]
     commentList = jsonpath.jsonpath(resultData, '$..orig_text')
+    # 检查动态是否已经完全拉取 返回False即完全拉取
+    print(jsonpath.jsonpath(page["data"], '$..has_more')[0])
     result = checkAllResult(tagNeed, commentList)
 
     return result
