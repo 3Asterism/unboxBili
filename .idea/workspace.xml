@@ -57,6 +57,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.unboxDynamic (1)">
+    <configuration name="demo (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="openBoxBili" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/unbox" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/unbox/demo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="openBoxBili" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -165,6 +186,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.unboxDynamic (1)" />
+        <item itemvalue="Python.demo (1)" />
         <item itemvalue="Python.unboxDynamic" />
         <item itemvalue="Python.demo2" />
         <item itemvalue="Python.demo" />
@@ -194,7 +216,35 @@
       <option name="project" value="LOCAL" />
       <updated>1683196212649</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="解决动态拉取不全的问题&#10;提交扫描关注的框架">
+      <created>1683257379579</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683257379579</updated>
+    </task>
+    <task id="LOCAL-00004" summary="解决动态还是刷新不全的问题 现在可以拿到了">
+      <created>1683262454131</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683262454131</updated>
+    </task>
+    <task id="LOCAL-00005" summary="新增查看关注接口">
+      <created>1683275567206</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683275567206</updated>
+    </task>
+    <task id="LOCAL-00006" summary="新增查看关注接口 再次上传">
+      <created>1683275611708</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683275611708</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +261,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="第一次上传&#10;优化算法" />
     <MESSAGE value="引入flask框架" />
-    <option name="LAST_COMMIT_MESSAGE" value="引入flask框架" />
+    <MESSAGE value="解决动态拉取不全的问题&#10;提交扫描关注的框架" />
+    <MESSAGE value="解决动态还是刷新不全的问题 现在可以拿到了" />
+    <MESSAGE value="新增查看关注接口" />
+    <MESSAGE value="新增查看关注接口 再次上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增查看关注接口 再次上传" />
   </component>
 </project>

@@ -74,6 +74,52 @@ def circulateForFollow(uid):
     return resultList
 
 
+def getAnimeRequest(uid):
+    url = "https://api.bilibili.com/x/space/bangumi/follow/list?type=1&follow_status=0&pn=1&ps=30&vmid={0}&ts=1683275503129".format(
+        uid)
+    response = requests.get(url=url)
+    page = json.loads(response.text)
+    resultData = page["data"]["list"]
+    # 拿到第一页的追番
+    length = int(jsonpath.jsonpath(page["data"], '$..total')[0])
+    resultList = jsonpath.jsonpath(resultData, '$..title')
+    flag = int(length / 30)
+    # 如果有更多内容 进行循环
+    if flag - 1 >= 0:
+        for i in range(flag - 1):
+            if i + 2 > 5:
+                break
+            newFlag = i + 2
+            newURL = "https://api.bilibili.com/x/space/bangumi/follow/list?type=1&follow_status=0&pn={0}&ps=30&vmid={1}&ts=1683275503129".format(
+                newFlag, uid)
+            response = requests.get(url=newURL)
+            page = json.loads(response.text)
+            uList = jsonpath.jsonpath(page["data"]["list"], '$..title')
+            for title in uList:
+                resultList.append(title)
+
+    return resultList, length
+
+
+def removeBadData(List):
+    newList = []
+    result = []
+    badData = ["OP&ED", "预告·花絮", "次元发电机专访", "花絮", "精彩看点", "总集篇", "其他", "全片", "主题曲", "经典回顾", "猜你喜欢", "高能速看", "预告", "UP主带你一起吃瓜", "特别篇", "精选二创", "研发记录"]
+    for i in range(len(List)):
+        for j in range(len(badData)):
+            if badData[j] in List[i]:
+                break
+            if j == len(badData) - 1:
+                newList.append(List[i])
+
+    for ele in newList:
+        if "0" not in ele and "1" not in ele and "2" not in ele and "3" not in ele and "4" not in ele and "5" not in ele and "6" not in ele and "7" not in ele and "8" not in ele and "9" not in ele and "PV" not in ele:
+            result.append(ele)
+        else:
+            continue
+    return result
+
+
 @server.route('/sendRequest', methods=['POST'])
 def sendRequest():
     # 返回b站动态数据
@@ -100,6 +146,22 @@ def sendFollowRequest():
         return circulateForFollow(uid)
     else:
         return result
+
+
+@server.route('/sendAnimeRequest', methods=['POST'])
+def sendAnimeRequest():
+    # 返回b站关注数据
+    uid = json.loads(request.get_data())['uid']
+    resultWhat = json.loads(request.get_data())['result']
+    result, length = getAnimeRequest(uid)
+    # 去除脏数据 暂时没想到更好的解决方法
+    result = list(dict.fromkeys(result))
+    result2 = removeBadData(result)
+    # 返回追番列表或者追番总数
+    if resultWhat == "1":
+        return str(length)
+    else:
+        return result2
 
 
 if __name__ == '__main__':

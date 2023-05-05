@@ -2,6 +2,15 @@ openBoxDynamic.py:
     @server.route('/sendRequest', methods=['POST'])
     def sendRequest():
         {
-            "uid" : 1899520,
-            "tag" : ["原神", "明日方舟"]
+            "uid" : 434835290,
+            "tag" : ["cat", "明日方舟"],
+            "result" : "1"
+        }
+
+    @server.route('/sendFollowRequest', methods=['POST'])
+    def sendFollowRequest():
+        {
+            "uid" : 371047666,
+            "tag" : ["Official", "Channel"],
+            "result" : "0"
         }

@@ -1,0 +1,3 @@
+b站动态刷新逻辑:
+生成一页动态->有更多动态则生成offset且has_more字段为True
+循环把has_more拿到为false为止.
